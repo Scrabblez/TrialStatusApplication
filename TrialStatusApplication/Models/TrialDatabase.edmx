@@ -49,7 +49,7 @@
         <EntityContainer Name="TrialStatusEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Trials" EntityType="TrialStatusModel.Trial" />
           <EntitySet Name="JudgeName_XRef" EntityType="TrialStatusModel.JudgeName_XRef" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Trial">
           <Key>
             <PropertyRef Name="ID" />
@@ -116,15 +116,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="JudgeName_XRef">
-            <EntityTypeMapping TypeName="TrialStatusModel.JudgeName_XRef">
+            <EntityTypeMapping TypeName="IsTypeOf(TrialStatusModel.JudgeName_XRef)">
               <MappingFragment StoreEntitySet="JudgeName_XRef">
-                <ScalarProperty Name="JudgeIntials" ColumnName="JudgeIntials" />
-                <ScalarProperty Name="JudgeName" ColumnName="JudgeName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="JudgeName" ColumnName="JudgeName" />
+                <ScalarProperty Name="JudgeIntials" ColumnName="JudgeIntials" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

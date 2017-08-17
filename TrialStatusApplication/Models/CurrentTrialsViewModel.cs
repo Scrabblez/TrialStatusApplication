@@ -7,5 +7,8 @@ namespace TrialStatusApplication.Models
 {
     public class CurrentTrialsViewModel
     {
+
+        public List<Trial> UpcomingTrials { get; set; }
+        public List<Judge> MyProperty { get; set; }
     }
 }

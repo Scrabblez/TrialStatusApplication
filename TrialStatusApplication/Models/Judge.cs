@@ -8,8 +8,7 @@ namespace TrialStatusApplication.Models
     public class Judge
     {
         public string JudgeName { get; set; }
-
         public Trial CurrentTrial { get; set; }
-
+        public string Status { get; set; }
     }
 }

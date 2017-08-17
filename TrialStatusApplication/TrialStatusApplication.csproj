@@ -232,6 +232,7 @@
       <DependentUpon>TrialDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\StatusesEnum.cs" />
     <Compile Include="Models\TrialViewModel.cs" />
     <Compile Include="Models\Trial.cs">
       <DependentUpon>TrialDatabase.tt</DependentUpon>

@@ -21,6 +21,5 @@ namespace TrialStatusApplication.Models
             DefenseAttorney = _trial.DEFENSE_ATTORNEY;
             TrialDate = Convert.ToDateTime(_trial.RULE_600);
         }
-
     }
 }
