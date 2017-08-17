@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="b796c8a2d03f483d86ea3564f5b7aa48" Name="Diagram1" >
         <EntityTypeShape EntityType="TrialStatusModel.Trial" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TrialStatusModel.JudgeName_XRef" Width="1.5" PointX="5.625" PointY="1.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

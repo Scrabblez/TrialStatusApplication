@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TrialStatusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="JudgeName_XRef">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="JudgeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="JudgeIntials" Type="nvarchar" MaxLength="4" />
+        </EntityType>
         <EntityType Name="Trials">
           <Key>
             <PropertyRef Name="ID" />
@@ -31,6 +39,7 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityContainer Name="TrialStatusModelStoreContainer">
+          <EntitySet Name="JudgeName_XRef" EntityType="Self.JudgeName_XRef" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trials" EntityType="Self.Trials" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -39,6 +48,7 @@
       <Schema Namespace="TrialStatusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TrialStatusEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Trials" EntityType="TrialStatusModel.Trial" />
+          <EntitySet Name="JudgeName_XRef" EntityType="TrialStatusModel.JudgeName_XRef" />
         </EntityContainer>
         <EntityType Name="Trial">
           <Key>
@@ -64,6 +74,14 @@
           <Property Name="C_1_HOUR_NOTICE___REASON" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MISCNOTES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JudgeName_XRef">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="JudgeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JudgeIntials" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -94,6 +112,15 @@
                 <ScalarProperty Name="UNIT" ColumnName="UNIT" />
                 <ScalarProperty Name="BAIL_STATUS" ColumnName="BAIL STATUS" />
                 <ScalarProperty Name="RULE_600" ColumnName="RULE 600" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JudgeName_XRef">
+            <EntityTypeMapping TypeName="TrialStatusModel.JudgeName_XRef">
+              <MappingFragment StoreEntitySet="JudgeName_XRef">
+                <ScalarProperty Name="JudgeIntials" ColumnName="JudgeIntials" />
+                <ScalarProperty Name="JudgeName" ColumnName="JudgeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
