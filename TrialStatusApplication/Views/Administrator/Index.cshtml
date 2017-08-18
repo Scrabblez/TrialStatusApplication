@@ -1,0 +1,54 @@
+﻿@model TrialStatusApplication.Models.AdministratorViewModel
+@using TrialStatusApplication.Models;
+@{
+    ViewBag.Title = "Administrator";
+}
+
+<h2>View</h2>
+
+<table>
+    <tr>
+        <th>Bortner</th>
+        <th>Musti-Cook</th>
+        <th>Ness</th>
+        <th>Snyder</th>
+        <th>Trebilcock</th>
+    </tr>
+    @foreach (var judge in Model.Judges)
+    {
+    <tr>
+        <td>
+            @judge.JudgeName
+        </td>
+        <td align="center">
+            <p>@judge.CurrentTrial.DEFENDANT_NAME</p>
+            <p>@judge.CurrentTrial.PROSECUTOR</p>
+            <p>@judge.CurrentTrial.DEFENSE_ATTORNEY</p>
+            <p>@judge.Status</p>
+        </td>
+    </tr>
+    }
+</table>
+
+<table class="table">
+    <tr>
+        <th>Defendant</th>
+        <th>Prosecutor</th>
+        <th>Defense Attorney</th>
+    </tr>
+
+@foreach (var trial in Model.Trials) {
+    <tr>
+        <td>
+            @trial.DEFENDANT_NAME
+        </td>
+        <td>
+            @trial.PROSECUTOR
+        </td>
+        <td>
+            @trial.DEFENSE_ATTORNEY
+        </td>
+    </tr>
+}
+
+</table>

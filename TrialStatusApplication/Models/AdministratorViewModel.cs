@@ -5,10 +5,10 @@ using System.Web;
 
 namespace TrialStatusApplication.Models
 {
-    public class CurrentTrialsViewModel
+    public class AdministratorViewModel
     {
-
-        public List<Trial> UpcomingTrials { get; set; }
+        public List<Trial> Trials { get; set; }
         public List<Judge> Judges { get; set; }
+        public AdminUser User { get; set; }
     }
 }

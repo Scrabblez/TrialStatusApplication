@@ -7,6 +7,7 @@ namespace TrialStatusApplication.Models
 {
     public class Judge
     {
+        public int ID { get; set; }
         public string JudgeName { get; set; }
         public Trial CurrentTrial { get; set; }
         public string Status { get; set; }

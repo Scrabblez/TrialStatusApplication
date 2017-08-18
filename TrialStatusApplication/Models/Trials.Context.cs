@@ -13,10 +13,10 @@ namespace TrialStatusApplication.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TrialStatusEntities : DbContext
+    public partial class TrialStatusEntities1 : DbContext
     {
-        public TrialStatusEntities()
-            : base("name=TrialStatusEntities")
+        public TrialStatusEntities1()
+            : base("name=TrialStatusEntities1")
         {
         }
     
@@ -25,7 +25,8 @@ namespace TrialStatusApplication.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Trial> Trials { get; set; }
         public virtual DbSet<JudgeName_XRef> JudgeName_XRef { get; set; }
+        public virtual DbSet<Trial> Trials { get; set; }
+        public virtual DbSet<JudgeCaseStatus> JudgeCaseStatus { get; set; }
     }
 }

@@ -220,37 +220,43 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DatabaseQueries\TrialInfoQueries.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdministratorViewModel.cs" />
+    <Compile Include="Models\AdminUser.cs" />
     <Compile Include="Models\CurrentTrialsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Judge.cs" />
+    <Compile Include="Models\JudgeCaseStatu.cs">
+      <DependentUpon>Trials.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\JudgeName_XRef.cs">
-      <DependentUpon>TrialDatabase.tt</DependentUpon>
+      <DependentUpon>Trials.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\StatusesEnum.cs" />
-    <Compile Include="Models\TrialViewModel.cs" />
     <Compile Include="Models\Trial.cs">
-      <DependentUpon>TrialDatabase.tt</DependentUpon>
+      <DependentUpon>Trials.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrialDatabase.Context.cs">
+    <Compile Include="Models\Trials.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrialDatabase.Context.tt</DependentUpon>
+      <DependentUpon>Trials.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrialDatabase.cs">
+    <Compile Include="Models\Trials.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrialDatabase.tt</DependentUpon>
+      <DependentUpon>Trials.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrialDatabase.Designer.cs">
+    <Compile Include="Models\Trials.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TrialDatabase.edmx</DependentUpon>
+      <DependentUpon>Trials.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -270,25 +276,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\TrialDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrialDatabase.edmx</DependentUpon>
-      <LastGenOutput>TrialDatabase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\TrialDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TrialDatabase.edmx</DependentUpon>
-      <LastGenOutput>TrialDatabase.cs</LastGenOutput>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\TrialDatabase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TrialDatabase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TrialDatabase.edmx.diagram">
-      <DependentUpon>TrialDatabase.edmx</DependentUpon>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -298,7 +287,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\Trials.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Trials.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Trials.edmx.diagram">
+      <DependentUpon>Trials.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Models\Trials.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Trials.edmx</DependentUpon>
+      <LastGenOutput>Trials.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Trials.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Trials.edmx</DependentUpon>
+      <LastGenOutput>Trials.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -344,6 +350,7 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

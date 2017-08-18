@@ -5,14 +5,19 @@ using System.Web;
 
 namespace TrialStatusApplication.Models
 {
-    public class StatusesEnum
+    public class Statuses
     {
-        enum Status
+        public List<string> StatusList { get; set; }
+
+        public Statuses()
         {
-            //TODO: Figure out what to put here
-            InSession,
-            Recess,
-            Postponed,
+            StatusList = new List<string>();
+            StatusList.Add("Voir Dire");
+            StatusList.Add("Opening Statements");
+            StatusList.Add("Commonwealth's Case");
+            StatusList.Add("Defense Case");
+            StatusList.Add("Closing Statements");
+            StatusList.Add("Jury Instructions");
         }
     }
 }
