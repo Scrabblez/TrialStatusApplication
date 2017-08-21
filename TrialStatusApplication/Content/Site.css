@@ -22,3 +22,25 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.centerColText {
+    text-align: center;
+}
+
+.judgeHeader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22pt;
+}
+
+.currentCaseHeader {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.currentCaseText {
+    text-align: center;
+    font-weight:normal;
+    font-size: 12pt;
+}

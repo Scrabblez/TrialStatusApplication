@@ -4,51 +4,137 @@
     ViewBag.Title = "Administrator";
 }
 
-<h2>View</h2>
 
-<table>
-    <tr>
-        <th>Bortner</th>
-        <th>Musti-Cook</th>
-        <th>Ness</th>
-        <th>Snyder</th>
-        <th>Trebilcock</th>
-    </tr>
-    @foreach (var judge in Model.Judges)
+<h2>Administrator</h2>
+
+
+<div class="container">
+    <div class="row centerColText">
+        @foreach (var judge in Model.Judges)
+            {
+            <div class="col-md-2 judgeHeader">
+                @judge.JudgeName
+                <div class="currentCaseHeader">
+                    Defendant
+                    <div class="currentCaseText">Human Aragon@*@judge.CurrentTrial.DEFENDANT_NAME*@</div>
+                </div>
+                <div class="currentCaseHeader">
+                    Prosecuter
+                    <div class="currentCaseText">Elf Legolas@*@judge.CurrentTrial.PROSECUTOR*@</div>
+                </div>
+                <div class="currentCaseHeader">
+                    Defense Attorney
+                    <div class="currentCaseText">Dwarf Gimili@*@judge.CurrentTrial.DEFENSE_ATTORNEY*@</div>
+                </div>
+                <br />
+
+                <div class="currentCaseHeader">
+                    Status
+                    <div class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Current Status@*@judge.CurrentTrial.CASE_STATUS*@<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach (var status in Model.Statuses.StatusList)
+                                {
+                                    <li><a href="#">@status</a></li>
+                                }
+
+
+
+                            @*<li><a href="#">Commonwealth Case</a></li>
+                            <li><a href="#">Closings</a></li>
+                            <li><a href="#">Defense Case</a></li>
+                            <li><a href="#">Jury Deliberation</a></li>
+                            <li><a href="#">Openings</a></li>
+                            <li><a href="#">Verdict</a></li>
+                            <li><a href="#">Voire Dire</a></li>*@
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+        }
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    @foreach (var trial in Model.Trials)
     {
-    <tr>
-        <td>
-            @judge.JudgeName
-        </td>
-        <td align="center">
-            <p>@judge.CurrentTrial.DEFENDANT_NAME</p>
-            <p>@judge.CurrentTrial.PROSECUTOR</p>
-            <p>@judge.CurrentTrial.DEFENSE_ATTORNEY</p>
-            <p>@judge.Status</p>
-        </td>
-    </tr>
-    }
-</table>
-
-<table class="table">
-    <tr>
-        <th>Defendant</th>
-        <th>Prosecutor</th>
-        <th>Defense Attorney</th>
-    </tr>
-
-@foreach (var trial in Model.Trials) {
-    <tr>
-        <td>
+        <div class="col-md-6">
+            @trial.JUDGE
+            ,
             @trial.DEFENDANT_NAME
-        </td>
-        <td>
+            ,
             @trial.PROSECUTOR
-        </td>
-        <td>
+            ,
             @trial.DEFENSE_ATTORNEY
-        </td>
-    </tr>
-}
+            ,
+            @trial.MISCNOTES
+        </div>
 
-</table>
+        <div class="col-md-6">
+
+        </div>
+    }
+
+</div>
+
+
+
+
+@*<table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Bortner</th>
+                <th>Musti-Cook</th>
+                <th>Ness</th>
+                <th>Snyder</th>
+                <th>Trebilcock</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var judge in Model.Judges)
+            {
+                <tr>
+                    <td>
+                        @judge.JudgeName
+                    </td>
+                    <td align="center">
+                        <p>@judge.CurrentTrial.DEFENDANT_NAME</p>
+                        <p>@judge.CurrentTrial.PROSECUTOR</p>
+                        <p>@judge.CurrentTrial.DEFENSE_ATTORNEY</p>
+                        <p>@judge.Status</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+
+
+
+@*<table class="table">
+        <tr>
+            <th>Defendant</th>
+            <th>Prosecutor</th>
+            <th>Defense Attorney</th>
+        </tr>
+
+        @foreach (var trial in Model.Trials)
+        {
+            <tr>
+                <td>
+                    @trial.DEFENDANT_NAME
+                </td>
+                <td>
+                    @trial.PROSECUTOR
+                </td>
+                <td>
+                    @trial.DEFENSE_ATTORNEY
+                </td>
+            </tr>
+        }
+
+    </table>*@
+

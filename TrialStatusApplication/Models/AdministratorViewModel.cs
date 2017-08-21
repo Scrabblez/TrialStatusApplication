@@ -10,5 +10,6 @@ namespace TrialStatusApplication.Models
         public List<Trial> Trials { get; set; }
         public List<Judge> Judges { get; set; }
         public AdminUser User { get; set; }
+        public Statuses Statuses { get; set; }
     }
 }

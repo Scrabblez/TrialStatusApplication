@@ -7,7 +7,7 @@
       <Diagram DiagramId="6e2ae0a2009d4bdb852e544fb4d3da80" Name="Diagram1">
         <EntityTypeShape EntityType="TrialStatusModel.JudgeName_XRef" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TrialStatusModel.Trial" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TrialStatusModel.JudgeCaseStatus" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TrialStatusModel.JudgeCaseStatus" Width="1.5" PointX="5.375" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
