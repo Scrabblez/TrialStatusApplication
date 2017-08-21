@@ -9,7 +9,7 @@ namespace TrialStatusApplication.DatabaseQueries
     public class TrialInfoQueries
     {
 
-        public List<Trial> GetTrials()
+        internal List<Trial> GetTrials()
         {
             TrialStatusEntities1 db = new TrialStatusEntities1();
             var trials = from trial in db.Trials
@@ -24,7 +24,7 @@ namespace TrialStatusApplication.DatabaseQueries
             return currentTrials.ToList();
         }
 
-        public List<Judge> GetJudgesAndStatus()
+        internal List<Judge> GetJudgesAndStatus()
         {
 
             TrialStatusEntities1 db = new TrialStatusEntities1();
@@ -54,6 +54,42 @@ namespace TrialStatusApplication.DatabaseQueries
             }
 
             return judgesList;
+        }
+
+        internal void UpdateJudges(List<Judge> judgesUpdates)
+        {
+            TrialStatusEntities1 db = new TrialStatusEntities1();
+
+            List<JudgeCaseStatus> judges = (from judge in db.JudgeCaseStatus1
+                                  select judge).ToList();
+
+            foreach (Judge updateJudge in judgesUpdates)
+            {
+                JudgeCaseStatus judgeToUpdate = (from j in judges
+                                                 where j.CaseID == updateJudge.CurrentTrial.CASE_NUMBER).FirstOrDefault();
+
+                judgeToUpdate.Status = updateJudge.Status;
+            }
+
+            db.SaveChanges();
+        }
+
+        internal void UpdateTrials(List<Trial> updatedTrials)
+        {
+            TrialStatusEntities1 db = new TrialStatusEntities1();
+
+            List<Trial> trials = (from trial in db.Trials
+                                 select trial).ToList();
+
+            foreach (Trial trialUpdate in updatedTrials)
+            {
+                Trial trialToUpdate = (from t in trials
+                                      where t.ID == trialUpdate.ID
+                                      select t).FirstOrDefault();
+                trialToUpdate.JUDGE = trialUpdate.JUDGE;
+            }
+
+            db.SaveChanges();
         }
     }
 }
