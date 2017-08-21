@@ -4,14 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TrialStatusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'TrialStatus.dbo.JudgeCaseStatus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="TrialStatusModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="JudgeCaseStatus">
           <Key>
             <PropertyRef Name="Judge" />
           </Key>
-          <Property Name="Judge" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Judge" Type="nvarchar" MaxLength="4" Nullable="false" />
           <Property Name="CaseID" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -49,18 +47,11 @@ warning 6002: The table/view 'TrialStatus.dbo.JudgeCaseStatus' does not have a p
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityContainer Name="TrialStatusModelStoreContainer">
+          <EntitySet Name="JudgeCaseStatus" EntityType="Self.JudgeCaseStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JudgeName_XRef" EntityType="Self.JudgeName_XRef" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trials" EntityType="Self.Trials" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="JudgeCaseStatus" EntityType="Self.JudgeCaseStatus" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [JudgeCaseStatus].[Judge] AS [Judge], 
-    [JudgeCaseStatus].[CaseID] AS [CaseID], 
-    [JudgeCaseStatus].[Status] AS [Status]
-    FROM [dbo].[JudgeCaseStatus] AS [JudgeCaseStatus]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TrialStatusModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -97,19 +88,19 @@ warning 6002: The table/view 'TrialStatus.dbo.JudgeCaseStatus' does not have a p
           <Property Name="MISCNOTES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID" Type="Guid" Nullable="false" />
         </EntityType>
-        <EntityType Name="JudgeCaseStatu">
-          <Key>
-            <PropertyRef Name="Judge" />
-          </Key>
-          <Property Name="Judge" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CaseID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="TrialStatusEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="JudgeName_XRef" EntityType="Self.JudgeName_XRef" />
           <EntitySet Name="Trials" EntityType="Self.Trial" />
-          <EntitySet Name="JudgeCaseStatus" EntityType="Self.JudgeCaseStatu" />
+          <EntitySet Name="JudgeCaseStatus1" EntityType="TrialStatusModel.JudgeCaseStatus" />
         </EntityContainer>
+        <EntityType Name="JudgeCaseStatus">
+          <Key>
+            <PropertyRef Name="Judge" />
+          </Key>
+          <Property Name="Judge" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CaseID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -151,12 +142,12 @@ warning 6002: The table/view 'TrialStatus.dbo.JudgeCaseStatus' does not have a p
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="JudgeCaseStatus">
-            <EntityTypeMapping TypeName="TrialStatusModel.JudgeCaseStatu">
+          <EntitySetMapping Name="JudgeCaseStatus1">
+            <EntityTypeMapping TypeName="TrialStatusModel.JudgeCaseStatus">
               <MappingFragment StoreEntitySet="JudgeCaseStatus">
-                <ScalarProperty Name="Judge" ColumnName="Judge" />
-                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="Judge" ColumnName="Judge" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

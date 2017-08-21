@@ -16,8 +16,9 @@ namespace TrialStatusApplication.Controllers
             AdministratorViewModel viewModel = new AdministratorViewModel();
             TrialInfoQueries query = new TrialInfoQueries();
             viewModel.Trials = query.GetTrials();
+            viewModel.User = new AdminUser { RealName = "Mr. Squiggles", Username="MSQUIGGLY"};
             viewModel.Judges = query.GetJudgesAndStatus();
-            return View();
+            return View(viewModel);
         }
     }
 }

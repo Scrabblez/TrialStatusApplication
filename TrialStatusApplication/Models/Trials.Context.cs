@@ -27,6 +27,6 @@ namespace TrialStatusApplication.Models
     
         public virtual DbSet<JudgeName_XRef> JudgeName_XRef { get; set; }
         public virtual DbSet<Trial> Trials { get; set; }
-        public virtual DbSet<JudgeCaseStatus> JudgeCaseStatus { get; set; }
+        public virtual DbSet<JudgeCaseStatus> JudgeCaseStatus1 { get; set; }
     }
 }

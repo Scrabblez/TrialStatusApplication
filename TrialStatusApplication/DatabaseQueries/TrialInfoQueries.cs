@@ -17,8 +17,7 @@ namespace TrialStatusApplication.DatabaseQueries
                          orderby trial.RULE_600 descending
                          select trial;
 
-            var judges = from judgeCase in db.JudgeCaseStatus
-                         select judgeCase;
+            var judges = from judgeCase in db.JudgeCaseStatus1 select judgeCase;
 
             var currentTrials = trials.Where(t => judges.Any(j => t.ID.ToString() != j.CaseID));
 
@@ -29,7 +28,7 @@ namespace TrialStatusApplication.DatabaseQueries
         {
 
             TrialStatusEntities1 db = new TrialStatusEntities1();
-            var judges = from judgeCase in db.JudgeCaseStatus
+            var judges = from judgeCase in db.JudgeCaseStatus1
                          select judgeCase;
 
             var trials = from trial in db.Trials

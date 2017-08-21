@@ -232,7 +232,7 @@
     <Compile Include="Models\CurrentTrialsViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Judge.cs" />
-    <Compile Include="Models\JudgeCaseStatu.cs">
+    <Compile Include="Models\JudgeCaseStatus.cs">
       <DependentUpon>Trials.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JudgeName_XRef.cs">
