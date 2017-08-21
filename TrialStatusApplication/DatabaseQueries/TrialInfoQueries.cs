@@ -25,19 +25,36 @@ namespace TrialStatusApplication.DatabaseQueries
             return currentTrials.ToList();
         }
 
-        public List<Judge> GetJudges()
+        public List<Judge> GetJudgesAndStatus()
         {
 
             TrialStatusEntities1 db = new TrialStatusEntities1();
             var judges = from judgeCase in db.JudgeCaseStatus
                          select judgeCase;
 
+            var trials = from trial in db.Trials
+                         select trial;
+
+            var judgeNames = from judgeIntials in db.JudgeName_XRef
+                             select judgeIntials;
+
             List<Judge> judgesList = new List<Judge>();
 
             foreach (JudgeCaseStatus judge in judges)
             {
+                var foundTrial = from trial in trials
+                             where trial.ID.ToString() == judge.CaseID
+                             select trial;
 
+                var judgeName = from judgeIntials in judgeNames
+                                 where judgeIntials.JudgeIntials == judge.Judge
+                                 select judgeIntials;
+
+
+                judgesList.Add(new Judge { CurrentTrial = foundTrial.FirstOrDefault(), JudgeName = judgeName.FirstOrDefault().JudgeName, Status = judge.Status });
             }
+
+            return judgesList;
         }
     }
 }
