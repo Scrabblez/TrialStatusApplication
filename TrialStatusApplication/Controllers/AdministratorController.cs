@@ -11,7 +11,8 @@ namespace TrialStatusApplication.Controllers
     public class AdministratorController : Controller
     {
         // GET: Admin
-        [Authorize]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
         public ActionResult Index()
         {
             AdministratorViewModel viewModel = new AdministratorViewModel();
@@ -22,13 +23,25 @@ namespace TrialStatusApplication.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
-        [Authorize]
-        public ActionResult Index(List<Trial> trialUpdates, List<Judge> judgesUpdates)
+        //[AcceptVerbs(HttpVerbs.Post), Authorize]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Index(Trial trialUpdates, Judge judgesUpdates, Trial assignedTrial)
         {
             TrialInfoQueries query = new TrialInfoQueries();
-            query.UpdateTrials(trialUpdates);
-            query.UpdateJudges(judgesUpdates);
+            if (assignedTrial != null)
+            {
+                query.AssignTrials(assignedTrial);
+            }
+
+            if (trialUpdates != null)
+            {
+                query.UpdateTrials(trialUpdates); 
+            }
+
+            if (judgesUpdates != null)
+            {
+                query.UpdateJudges(judgesUpdates); 
+            }
 
             AdministratorViewModel viewModel = new AdministratorViewModel();
 

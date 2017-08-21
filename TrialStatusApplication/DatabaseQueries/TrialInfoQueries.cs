@@ -56,38 +56,38 @@ namespace TrialStatusApplication.DatabaseQueries
             return judgesList;
         }
 
-        internal void UpdateJudges(List<Judge> judgesUpdates)
+        internal void AssignTrials(Trial assignedTrial)
+        {
+            TrialStatusEntities1 db = new TrialStatusEntities1();
+            JudgeCaseStatus status = (from judges in db.JudgeCaseStatus1
+                                      where judges.Judge == assignedTrial.JUDGE
+                                      select judges).FirstOrDefault();
+
+            db.JudgeCaseStatus1.Remove(status);
+            db.SaveChanges();
+
+            db.JudgeCaseStatus1.Add(new JudgeCaseStatus { CaseID = assignedTrial.CASE_NUMBER, Judge = assignedTrial.JUDGE, Status = "" });
+        }
+
+        internal void UpdateJudges(Judge judgeUpdate)
         {
             TrialStatusEntities1 db = new TrialStatusEntities1();
 
-            List<JudgeCaseStatus> judges = (from judge in db.JudgeCaseStatus1
-                                  select judge).ToList();
-
-            foreach (Judge updateJudge in judgesUpdates)
-            {
-                JudgeCaseStatus judgeToUpdate = (from j in judges
-                                                 where j.CaseID == updateJudge.CurrentTrial.CASE_NUMBER).FirstOrDefault();
-
-                judgeToUpdate.Status = updateJudge.Status;
-            }
+                JudgeCaseStatus judgeToUpdate = (from j in db.JudgeCaseStatus1
+                                                 where j.CaseID == judgeUpdate.CurrentTrial.CASE_NUMBER
+                                                 select j).FirstOrDefault();
+                judgeToUpdate.Status = judgeUpdate.Status;
 
             db.SaveChanges();
         }
 
-        internal void UpdateTrials(List<Trial> updatedTrials)
+        internal void UpdateTrials(Trial updatedTrial)
         {
             TrialStatusEntities1 db = new TrialStatusEntities1();
-
-            List<Trial> trials = (from trial in db.Trials
-                                 select trial).ToList();
-
-            foreach (Trial trialUpdate in updatedTrials)
-            {
-                Trial trialToUpdate = (from t in trials
-                                      where t.ID == trialUpdate.ID
-                                      select t).FirstOrDefault();
-                trialToUpdate.JUDGE = trialUpdate.JUDGE;
-            }
+            Trial trialToUpdate = (from t in db.Trials
+                                   where t.ID == updatedTrial.ID
+                                   select t).FirstOrDefault();
+            trialToUpdate.JUDGE = updatedTrial.JUDGE;
 
             db.SaveChanges();
         }

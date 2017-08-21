@@ -7,6 +7,7 @@ namespace TrialStatusApplication.Models
 {
     public class AdministratorViewModel
     {
+
         public List<Trial> Trials { get; set; }
         public List<Judge> Judges { get; set; }
         public AdminUser User { get; set; }
