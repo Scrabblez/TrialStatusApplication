@@ -33,20 +33,20 @@
                     <div class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Current Status@*@judge.CurrentTrial.CASE_STATUS*@<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            @foreach (var status in Model.Statuses.StatusList)
+                            @*@foreach (var status in Model.Statuses.StatusList)
                                 {
                                     <li><a href="#">@status</a></li>
-                                }
+                                }*@
 
 
 
                             @*<li><a href="#">Commonwealth Case</a></li>
-                            <li><a href="#">Closings</a></li>
-                            <li><a href="#">Defense Case</a></li>
-                            <li><a href="#">Jury Deliberation</a></li>
-                            <li><a href="#">Openings</a></li>
-                            <li><a href="#">Verdict</a></li>
-                            <li><a href="#">Voire Dire</a></li>*@
+                                <li><a href="#">Closings</a></li>
+                                <li><a href="#">Defense Case</a></li>
+                                <li><a href="#">Jury Deliberation</a></li>
+                                <li><a href="#">Openings</a></li>
+                                <li><a href="#">Verdict</a></li>
+                                <li><a href="#">Voire Dire</a></li>*@
                         </ul>
                     </div>
                 </div>
@@ -65,19 +65,18 @@
         <div class="col-md-6">
             @trial.JUDGE
             ,
-            @trial.DEFENDANT_NAME
+            DEF @trial.DEFENDANT_NAME
             ,
             @trial.PROSECUTOR
             ,
-            @trial.DEFENSE_ATTORNEY
+            DA @trial.DEFENSE_ATTORNEY
             ,
             @trial.MISCNOTES
         </div>
-
-        <div class="col-md-6">
-
-        </div>
     }
+    <div class="col-md-6">
+
+    </div>
 
 </div>
 
