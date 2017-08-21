@@ -12,12 +12,13 @@ namespace TrialStatusApplication.Models
         public Statuses()
         {
             StatusList = new List<string>();
-            StatusList.Add("Voire Dire");
-            StatusList.Add("Opening Statements");
             StatusList.Add("Commonwealth's Case");
-            StatusList.Add("Defense Case");
             StatusList.Add("Closing Statements");
+            StatusList.Add("Defense Case");
             StatusList.Add("Jury Instructions");
+            StatusList.Add("Opening Statements");
+            StatusList.Add("Verdict");
+            StatusList.Add("Voire Dire");
         }
     }
 }

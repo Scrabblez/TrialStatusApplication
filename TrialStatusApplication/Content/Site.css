@@ -41,6 +41,11 @@ textarea {
 
 .currentCaseText {
     text-align: center;
-    font-weight:normal;
+    font-weight: normal;
     font-size: 12pt;
+}
+
+.row.centerColText > div {
+    display: inline-block;
+    float:none;
 }

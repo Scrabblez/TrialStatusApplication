@@ -12,7 +12,7 @@
     <div class="row centerColText">
         @foreach (var judge in Model.Judges)
             {
-            <div class="col-md-2 judgeHeader">
+            <div class="col-md-2 judgeHeader" @*style="width: @"*@>
                 @judge.JudgeName
                 <div class="currentCaseHeader">
                     Defendant
@@ -33,10 +33,10 @@
                     <div class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Current Status@*@judge.CurrentTrial.CASE_STATUS*@<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            @*@foreach (var status in Model.Statuses.StatusList)
-                                {
-                                    <li><a href="#">@status</a></li>
-                                }*@
+                            @foreach (var status in Model.Statuses.StatusList)
+                            {
+                                <li><a href="#">@status</a></li>
+                            }
 
 
 
@@ -60,19 +60,28 @@
 <br />
 <br />
 <div class="row">
-    @foreach (var trial in Model.Trials)
+    @if (Model.Trials != null)
     {
-        <div class="col-md-6">
-            @trial.JUDGE
-            ,
-            DEF @trial.DEFENDANT_NAME
-            ,
-            @trial.PROSECUTOR
-            ,
-            DA @trial.DEFENSE_ATTORNEY
-            ,
-            @trial.MISCNOTES
-        </div>
+        int count = 1;
+        if (Model.Trials.Count > 0)
+        {
+            foreach (var trial in Model.Trials)
+            {
+                <div class="col-md-6">
+                    @count.ToString() )
+                    @trial.JUDGE
+                    ,
+                    @trial.DEFENDANT_NAME
+                    ,
+                    DA - @trial.PROSECUTOR
+                    ,
+                    DEF - @trial.DEFENSE_ATTORNEY
+                    ,
+                    @trial.MISCNOTES
+                </div>
+                count++;
+            }
+        }
     }
     <div class="col-md-6">
 
