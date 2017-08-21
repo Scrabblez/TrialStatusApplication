@@ -25,7 +25,7 @@ namespace TrialStatusApplication.Controllers
 
         //[AcceptVerbs(HttpVerbs.Post), Authorize]
         //[ValidateAntiForgeryToken]
-        public ActionResult Index(Trial trialUpdates, Judge judgesUpdates, Trial assignedTrial)
+        public ActionResult Update(Trial trialUpdates, Judge judgesUpdates, Trial assignedTrial)
         {
             TrialInfoQueries query = new TrialInfoQueries();
             if (assignedTrial != null)

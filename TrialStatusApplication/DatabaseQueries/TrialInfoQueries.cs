@@ -19,8 +19,7 @@ namespace TrialStatusApplication.DatabaseQueries
 
             var judges = from judgeCase in db.JudgeCaseStatus1 select judgeCase;
 
-            var currentTrials = trials.Where(t => judges.Any(j => t.ID.ToString() != j.CaseID));
-
+            var currentTrials = trials.Where(t => !judges.Any(j => j.CaseID == t.CASE_NUMBER));
             return currentTrials.ToList();
         }
 
