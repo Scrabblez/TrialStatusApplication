@@ -9,7 +9,7 @@ namespace TrialStatusApplication.DatabaseQueries
     public class TrialInfoQueries
     {
 
-        public List<Trial> GetTrials()
+        internal List<Trial> GetTrials()
         {
             TrialStatusEntities1 db = new TrialStatusEntities1();
             var trials = from trial in db.Trials
@@ -19,12 +19,11 @@ namespace TrialStatusApplication.DatabaseQueries
 
             var judges = from judgeCase in db.JudgeCaseStatus1 select judgeCase;
 
-            var currentTrials = trials.Where(t => judges.Any(j => t.ID.ToString() != j.CaseID));
-
-            return currentTrials.ToList<Trial>();
+            var currentTrials = trials.Where(t => !judges.Any(j => j.CaseID == t.CASE_NUMBER));
+            return currentTrials.ToList();
         }
 
-        public List<Judge> GetJudgesAndStatus()
+        internal List<Judge> GetJudgesAndStatus()
         {
 
             TrialStatusEntities1 db = new TrialStatusEntities1();
@@ -54,6 +53,42 @@ namespace TrialStatusApplication.DatabaseQueries
             }
 
             return judgesList;
+        }
+
+        internal void AssignTrials(Trial assignedTrial)
+        {
+            TrialStatusEntities1 db = new TrialStatusEntities1();
+            JudgeCaseStatus status = (from judges in db.JudgeCaseStatus1
+                                      where judges.Judge == assignedTrial.JUDGE
+                                      select judges).FirstOrDefault();
+
+            db.JudgeCaseStatus1.Remove(status);
+            db.SaveChanges();
+
+            db.JudgeCaseStatus1.Add(new JudgeCaseStatus { CaseID = assignedTrial.CASE_NUMBER, Judge = assignedTrial.JUDGE, Status = "" });
+        }
+
+        internal void UpdateJudges(Judge judgeUpdate)
+        {
+            TrialStatusEntities1 db = new TrialStatusEntities1();
+
+                JudgeCaseStatus judgeToUpdate = (from j in db.JudgeCaseStatus1
+                                                 where j.CaseID == judgeUpdate.CurrentTrial.CASE_NUMBER
+                                                 select j).FirstOrDefault();
+                judgeToUpdate.Status = judgeUpdate.Status;
+
+            db.SaveChanges();
+        }
+
+        internal void UpdateTrials(Trial updatedTrial)
+        {
+            TrialStatusEntities1 db = new TrialStatusEntities1();
+            Trial trialToUpdate = (from t in db.Trials
+                                   where t.ID == updatedTrial.ID
+                                   select t).FirstOrDefault();
+            trialToUpdate.JUDGE = updatedTrial.JUDGE;
+
+            db.SaveChanges();
         }
     }
 }
