@@ -47,5 +47,25 @@ textarea {
 
 .row.centerColText > div {
     display: inline-block;
-    float:none;
+    float: none;
+}
+
+.overrideContainerWidth {
+    width: 100%;
+}
+
+.adminColors {
+    color: cornflowerblue;
+}
+
+.dropdownWidth {
+    width: 10%;
+}
+
+.buttonMarginLeft {
+    margin-left: 20px;
+}
+
+.listFontSize {
+    font-size: 14pt;
 }

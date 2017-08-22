@@ -21,7 +21,6 @@ namespace TrialStatusApplication.Controllers
             viewModel.User = new AdminUser { RealName = "Mr. Squiggles", Username = "MSQUIGGLY" };
 
 
-
             Statuses statusList = new Statuses();
             viewModel.Statuses = statusList;
 
@@ -38,7 +37,6 @@ namespace TrialStatusApplication.Controllers
             trebilcock.JudgeName = "Trebilcock";
             List<Judge> listJudge = new List<Judge> { bortner, musticook, ness, snyder, trebilcock };
             viewModel.Judges = listJudge;
-            //
 
 
             //viewModel.Judges = query.GetJudgesAndStatus(); //UNCOMMENT WHEN READY

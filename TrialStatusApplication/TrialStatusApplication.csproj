@@ -239,7 +239,7 @@
       <DependentUpon>Trials.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\StatusesEnum.cs" />
+    <Compile Include="Models\Statuses.cs" />
     <Compile Include="Models\Trial.cs">
       <DependentUpon>Trials.tt</DependentUpon>
     </Compile>

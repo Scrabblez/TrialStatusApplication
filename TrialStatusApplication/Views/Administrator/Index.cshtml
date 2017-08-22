@@ -4,15 +4,15 @@
     ViewBag.Title = "Administrator";
 }
 
+<div class="container overrideContainerWidth">
+    <h2>Administrator: <span class="adminColors">@Model.User.Username</span> - <span class="adminColors">@Model.User.RealName</span></h2>
+</div>
 
-<h2>Administrator</h2>
-
-
-<div class="container">
+<div class="container overrideContainerWidth">
     <div class="row centerColText">
         @foreach (var judge in Model.Judges)
             {
-            <div class="col-md-2 judgeHeader" @*style="width: @"*@>
+            <div class="col-md-2 judgeHeader">
                 @judge.JudgeName
                 <div class="currentCaseHeader">
                     Defendant
@@ -30,6 +30,26 @@
 
                 <div class="currentCaseHeader">
                     Status
+
+                    <div class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Current Status@*@judge.CurrentTrial.CASE_STATUS*@<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Commonwealth's Case", "Update", "AdministratorController")</li>
+                            <li>@Html.ActionLink("Closing Statements", "Update", "AdministratorController")</li>
+                            <li>@Html.ActionLink("Defense Case", "Update", "AdministratorController")</li>
+                            <li>@Html.ActionLink("Jury Instructions", "Update", "AdministratorController")</li>
+                            <li>@Html.ActionLink("Opening Statements", "Update", "AdministratorController")</li>
+                            <li>@Html.ActionLink("Verdict", "Update", "AdministratorController")</li>
+                            <li>@Html.ActionLink("Voire Dire", "Update", "AdministratorController")</li>
+
+                        </ul>
+                    </div>
+
+
+                    <br />
+                    <br />
+
+
                     <div class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Current Status@*@judge.CurrentTrial.CASE_STATUS*@<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -59,36 +79,103 @@
 </div>
 <br />
 <br />
-<div class="row">
-    @if (Model.Trials != null)
-    {
-        int count = 1;
-        if (Model.Trials.Count > 0)
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Judge</th>
+            <th>Defendant</th>
+            <th>Prosecuter</th>
+            <th>Defense Attorney</th>
+            <th>Misc. Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Trials != null)
         {
+            int count = 1;
+
             foreach (var trial in Model.Trials)
             {
-                <div class="col-md-6">
-                    @count.ToString() )
-                    @trial.JUDGE
-                    ,
-                    @trial.DEFENDANT_NAME
-                    ,
-                    DA - @trial.PROSECUTOR
-                    ,
-                    DEF - @trial.DEFENSE_ATTORNEY
-                    ,
-                    @trial.MISCNOTES
-                </div>
+                <tr>
+                    <th scope="row">@count.ToString()</th>
+                    <td>@trial.JUDGE</td>
+                    <td>@trial.DEFENDANT_NAME</td>
+                    <td>@trial.PROSECUTOR</td>
+                    <td>@trial.DEFENSE_ATTORNEY</td>
+
+                </tr>
                 count++;
             }
         }
-    }
-    <div class="col-md-6">
+    </tbody>
+</table>
+
+
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="container overrideContainerWidth">
+    <div class="row">
+        @if (Model.Trials != null)
+        {
+            int count = 1;
+            if (Model.Trials.Count > 0)
+            {
+                foreach (var trial in Model.Trials)
+                {
+                    <div class="col-md-6">
+                        @count.ToString() )
+                        @trial.JUDGE
+                        ,
+                        @trial.DEFENDANT_NAME
+                        ,
+                        <b>DA</b> - @trial.PROSECUTOR
+                        ,
+                        <b>DEF</b> - @trial.DEFENSE_ATTORNEY
+                        ,
+                        @trial.MISCNOTES
+                        <div class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Current Status@*@judge.CurrentTrial.CASE_STATUS*@<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @foreach (var judge in Model.Judges)
+                                {
+                                    <li><a href="#">@judge.JudgeName</a></li>
+                                }
+                            </ul>
+
+                            <button type="button" class="btn btn-primary buttonMarginLeft">Advance Case</button>
+                        </div>
+
+                    </div>
+
+                    count++;
+                }
+            }
+        }
+
+
+
+        <div class="col-md-6">
+
+        </div>
 
     </div>
-
 </div>
-
 
 
 
