@@ -230,6 +230,9 @@
     <Compile Include="Models\AdministratorViewModel.cs" />
     <Compile Include="Models\AdminUser.cs" />
     <Compile Include="Models\CurrentTrialsViewModel.cs" />
+    <Compile Include="Models\CustomSignInManager.cs" />
+    <Compile Include="Models\CustomUser.cs" />
+    <Compile Include="Models\CustomUserManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Judge.cs" />
     <Compile Include="Models\JudgeCaseStatus.cs">
