@@ -27,14 +27,24 @@ namespace TrialStatusApplication.Controllers
             //REMOVE WHEN READY
             Judge bortner = new Judge();
             bortner.JudgeName = "Bortner";
+            bortner.Status = "Bortner";
+            bortner.CurrentTrial = new Trial { ID = Guid.NewGuid(), DEFENSE_ATTORNEY ="Ronald McDonald", CASE_NUMBER = "1234", PROSECUTOR ="Col. Sanders", DEFENDANT_NAME ="Chicken McNugget"};
             Judge musticook = new Judge();
             musticook.JudgeName = "Musti-Cook";
+            musticook.Status = "Musti-Cook";
+            musticook.CurrentTrial = new Trial { ID = Guid.NewGuid(), DEFENSE_ATTORNEY = "Ronald McDonald", CASE_NUMBER = "1234", PROSECUTOR = "Col. Sanders", DEFENDANT_NAME = "Chicken McNugget" };
             Judge ness = new Judge();
             ness.JudgeName = "Ness";
+            ness.Status = "Ness";
+            ness.CurrentTrial = new Trial { ID = Guid.NewGuid(), DEFENSE_ATTORNEY = "Ronald McDonald", CASE_NUMBER = "1234", PROSECUTOR = "Col. Sanders", DEFENDANT_NAME = "Chicken McNugget" };
             Judge snyder = new Judge();
             snyder.JudgeName = "Snyder";
+            snyder.Status = "Snyder";
+            snyder.CurrentTrial = new Trial { ID = Guid.NewGuid(), DEFENSE_ATTORNEY = "Ronald McDonald", CASE_NUMBER = "1234", PROSECUTOR = "Col. Sanders", DEFENDANT_NAME = "Chicken McNugget" };
             Judge trebilcock = new Judge();
             trebilcock.JudgeName = "Trebilcock";
+            trebilcock.Status = "Trebilcock";
+            trebilcock.CurrentTrial = new Trial { ID = Guid.NewGuid(), DEFENSE_ATTORNEY = "Ronald McDonald", CASE_NUMBER = "1234", PROSECUTOR = "Col. Sanders", DEFENDANT_NAME = "Chicken McNugget" };
             List<Judge> listJudge = new List<Judge> { bortner, musticook, ness, snyder, trebilcock };
             viewModel.Judges = listJudge;
 
@@ -47,6 +57,7 @@ namespace TrialStatusApplication.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult Update(Trial trialUpdates, Judge judgesUpdates, Trial assignedTrial)
         {
+            
             TrialInfoQueries query = new TrialInfoQueries();
             if (assignedTrial != null)
             {

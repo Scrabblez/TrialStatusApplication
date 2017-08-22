@@ -69,3 +69,33 @@ textarea {
 .listFontSize {
     font-size: 14pt;
 }
+
+.dropdownCurrentCustom {
+    margin-top: 5px;
+}
+
+.dropdownCurrentToggleCustom {
+    padding: 5px;
+    background-color: #0066cc;
+    color: white;
+    border-radius: 5px;
+}
+
+    .dropdownCurrentToggleCustom:hover {
+        background-color: #9099a2;
+        color: white;
+    }
+
+    .dropdownCurrentToggleCustom:focus {
+        background-color: rgb(0, 0, 102);
+        background-color: #9099a2;
+        color: white;
+    }
+
+.trialButtonCustom {
+    background-color: #0066cc;
+}
+
+.trialButtonCustom:hover {
+    background-color: #9099a2;
+}
