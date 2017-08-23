@@ -26,6 +26,7 @@
                     Defense Attorney
                     <div class="currentCaseText">Dwarf Gimili @judge.CurrentTrial.DEFENSE_ATTORNEY</div>
                 </div>
+
                 <br />
 
                 <div class="currentCaseHeader">
@@ -63,19 +64,17 @@
         }
     </div>
 </div>
-<br />
-<br />
 
 
 <table class="table">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Judge</th>
-            <th>Defendant</th>
-            <th>Prosecuter</th>
-            <th>Defense Attorney</th>
-            <th>Misc. Notes</th>
+            <th class="tableTextCenter">#</th>
+            <th class="tableTextCenter">Judge</th>
+            <th class="tableTextCenter">Defendant</th>
+            <th class="tableTextCenter">Prosecuter</th>
+            <th class="tableTextCenter">Defense Attorney</th>
+            <th class="tableTextCenter">Misc. Notes</th>
         </tr>
     </thead>
     <tbody>
@@ -86,28 +85,31 @@
             foreach (var trial in Model.Trials)
             {
                 <tr>
-                    <th scope="row">@count.ToString()</th>
-                    <td>@trial.JUDGE</td>
-                    <td>@trial.DEFENDANT_NAME</td>
-                    <td>@trial.PROSECUTOR</td>
-                    <td>@trial.DEFENSE_ATTORNEY</td>
-                    <td>@trial.MISCNOTES</td>
+                    <th class="tableTextCenter" scope="row">@count.ToString()</th>
+                    <td class="tableTextCenter">@trial.JUDGE</td>
+                    <td class="tableTextCenter">@trial.DEFENDANT_NAME</td>
+                    <td class="tableTextCenter">@trial.PROSECUTOR</td>
+                    <td class="tableTextCenter">@trial.DEFENSE_ATTORNEY</td>
+                    <td class="tableTextCenter">I am a misc note in the cshtml file. @trial.MISCNOTES</td>
                     <td>
-                        <div class="dropdown">
+                        <div class="dropdown tableTextCenter">
                             <a href="" class="dropdown-toggle dropdownCurrentToggleCustom" data-toggle="dropdown">Assign New Judge<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-right">
                                 @foreach (var judgeName in Model.Judges)
                                 {
                                     <li>@judgeName.JudgeName</li>
                                     @*<li>@Html.Action(Model.Judges.ToString(), "AdministratorController") </li>*@
                                 }
                             </ul>
-
                         </div>
                     </td>
-                    <td>
-                        <div class="btn btn-primary trialButtonCustom">
-                            @Html.ActionLink("Move to Assigned Judge", "Index", "AdministratorController", null, new { style = "color: white"})
+                    <td class="tableTextCenter">
+                        <div>
+                            @Html.ActionLink("Move to Assigned Judge", "Update", "AdministratorController",
+                             new
+                             {
+
+                             }, new { @class = "btn btn-primary trialButtonCustom" })
                         </div>
                     </td>
                 </tr>

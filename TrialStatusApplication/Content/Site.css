@@ -72,6 +72,7 @@ textarea {
 
 .dropdownCurrentCustom {
     margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 .dropdownCurrentToggleCustom {
@@ -94,8 +95,16 @@ textarea {
 
 .trialButtonCustom {
     background-color: #0066cc;
+    align-content: center;
+    border-radius: 5px;
+    color:white;
 }
 
-.trialButtonCustom:hover {
-    background-color: #9099a2;
+    .trialButtonCustom:hover {
+        background-color: #9099a2;
+    }
+
+.tableTextCenter {
+    text-align: center;
+    vertical-align: middle;
 }
