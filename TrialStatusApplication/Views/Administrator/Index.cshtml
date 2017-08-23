@@ -43,7 +43,7 @@
                                     new
                                     {
                                         JudgeName = judge.JudgeName,
-                                        CurrentTrial = judge.CurrentTrial,
+                                        CurrentTrialCaseNum = judge.CurrentTrial.CASE_NUMBER,
                                         Status = status.Text
                                     })
                                 </li>
@@ -84,6 +84,10 @@
 
             foreach (var trial in Model.Trials)
             {
+                for (int i = 0; i < Model.Judges.Count; i++)
+                {
+
+                }
                 <tr>
                     <th class="tableTextCenter" scope="row">@count.ToString()</th>
                     <td class="tableTextCenter">@trial.JUDGE</td>
@@ -92,7 +96,7 @@
                     <td class="tableTextCenter">@trial.DEFENSE_ATTORNEY</td>
                     <td class="tableTextCenter">I am a misc note in the cshtml file. @trial.MISCNOTES</td>
                     <td>
-                        <div class="dropdown tableTextCenter">
+                        <div class="dropdown tableTextCenter tableDropDownCustom">
                             <a href="" class="dropdown-toggle dropdownCurrentToggleCustom" data-toggle="dropdown">Assign New Judge<span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 @foreach (var judgeName in Model.Judges)
@@ -106,7 +110,7 @@
                     <td class="tableTextCenter">
                         <div>
                             @Html.ActionLink("Move to Assigned Judge", "Update", "AdministratorController",
-                             new
+                             new RouteValueDictionary
                              {
 
                              }, new { @class = "btn btn-primary trialButtonCustom" })
@@ -117,6 +121,7 @@
             }
         }
     </tbody>
+
 </table>
 
 
